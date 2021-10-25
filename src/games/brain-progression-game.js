@@ -1,34 +1,30 @@
 import game from '../index.js';
 import getRandomInt from '../get-random.js';
 
-const minFirstNumber = 1;
-const maxFirstNumber = 20;
-
 const progressionLength = 10;
 
-const minStep = 1;
-const maxStep = 10;
+const generateProgression = (first, step) => {
+  const progression = [];
+
+  for (let i = 0; i < progressionLength; i += 1) {
+    progression.push(first + i * step);
+  }
+
+  return progression;
+};
 
 const gameRule = 'What number is missing in the progression?';
 
 const generateQuestion = () => {
-  const first = getRandomInt(minFirstNumber, maxFirstNumber);
-  const step = getRandomInt(minStep, maxStep);
+  const first = getRandomInt(1, 20);
+  const step = getRandomInt(1, 10);
   const missingPosition = getRandomInt(0, progressionLength - 1);
 
-  const sequence = [];
-  let expectedAnswer;
+  const progression = generateProgression(first, step);
 
-  for (let i = 0; i < progressionLength; i += 1) {
-    if (i === missingPosition) {
-      expectedAnswer = String(first + i * step);
-      sequence.push('..');
-    } else {
-      sequence.push(first + i * step);
-    }
-  }
+  const expectedAnswer = String(progression.splice(missingPosition, 1, '..'));
 
-  const question = sequence.join(' ');
+  const question = progression.join(' ');
 
   return [question, expectedAnswer];
 };

@@ -8,9 +8,7 @@ const game = (gameRule, generateQuestion) => {
   console.log(`Hello, ${name}!`);
   console.log(gameRule);
 
-  let correctCount = 0;
-
-  while (correctCount < roundsNumber) {
+  for (let round = 1; round <= roundsNumber; round += 1) {
     const [question, expectedAnswer] = generateQuestion();
 
     console.log(`Question: ${question}`);
@@ -22,7 +20,6 @@ const game = (gameRule, generateQuestion) => {
       return;
     }
     console.log('Correct!');
-    correctCount += 1;
   }
   console.log(`Congratulations, ${name}!`);
 };
