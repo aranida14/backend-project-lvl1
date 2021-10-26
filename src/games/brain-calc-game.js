@@ -1,6 +1,8 @@
 import game from '../index.js';
 import getRandomInt from '../get-random.js';
 
+const gameRule = 'What is the result of the expression?';
+
 const calculateExpression = (operator, operand1, operand2) => {
   let result;
   switch (operator) {
@@ -16,17 +18,15 @@ const calculateExpression = (operator, operand1, operand2) => {
   return result;
 };
 
-const gameRule = 'What is the result of the expression?';
-
 const generateQuestion = () => {
   const operations = ['+', '-', '*'];
-  const num1 = getRandomInt(1, 50);
-  const num2 = getRandomInt(1, 50);
+  const number1 = getRandomInt(1, 50);
+  const number2 = getRandomInt(1, 50);
   const operIndex = getRandomInt(0, operations.length - 1);
 
-  const expression = `${num1} ${operations[operIndex]} ${num2}`;
+  const expression = `${number1} ${operations[operIndex]} ${number2}`;
 
-  const expectedAnswer = String(calculateExpression(operations[operIndex], num1, num2));
+  const expectedAnswer = String(calculateExpression(operations[operIndex], number1, number2));
 
   return [expression, expectedAnswer];
 };

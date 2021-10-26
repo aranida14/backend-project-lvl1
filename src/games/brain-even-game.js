@@ -1,9 +1,9 @@
 import game from '../index.js';
 import getRandomInt from '../get-random.js';
 
-const isEven = (num) => (num % 2 === 0);
-
 const gameRule = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const isEven = (num) => (num % 2 === 0);
 
 const generateQuestion = () => {
   const numberToCheck = getRandomInt(0, 99);

@@ -1,6 +1,8 @@
 import game from '../index.js';
 import getRandomInt from '../get-random.js';
 
+const gameRule = 'What number is missing in the progression?';
+
 const progressionLength = 10;
 
 const generateProgression = (first, step) => {
@@ -12,8 +14,6 @@ const generateProgression = (first, step) => {
 
   return progression;
 };
-
-const gameRule = 'What number is missing in the progression?';
 
 const generateQuestion = () => {
   const first = getRandomInt(1, 20);
